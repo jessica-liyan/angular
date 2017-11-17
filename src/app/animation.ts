@@ -19,7 +19,7 @@ trigger('routeAnimation', [
   transition(':leave', [
     animate('0.5s ease-out', style({
       opacity: 0,
-      transform: 'translateX(100%)'
+      transform: 'translateY(100%)'
     }))
   ])
 ]);
