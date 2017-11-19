@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding} from '@angular/core';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {Location} from '@angular/common';
+import { Title } from '@angular/platform-browser';
 import { DoubanService } from './../douban.service';
 
 import 'rxjs/add/operator/switchMap';
@@ -44,7 +45,7 @@ import {slideInDownAnimation} from '../animation';
         <h3 class="fs-16 c-3 mt-20 mb-10">目录</h3>
         <p class="fs-14 c-6 lh-20" style="white-space:pre;" *ngIf="book.catalog">{{book.catalog}}</p>
         <p class="fs-14 c-6 lh-20" *ngIf="!book.catalog">暂无目录</p>
-      </div>
+      </div>      
     </div>
   `
 })
@@ -63,7 +64,8 @@ export class BookDetailComponent implements OnInit{
     private DoubanService: DoubanService,
     private router: Router,
     private location: Location,
-    private activatedRoute:ActivatedRoute
+    private activatedRoute:ActivatedRoute,
+    private title: Title
   ){} 
   
   ngOnInit():void{
@@ -73,13 +75,14 @@ export class BookDetailComponent implements OnInit{
         return this.DoubanService.getBookDetail(params.get('id'))
       }).subscribe(res => {
         this.book = res
+        this.title.setTitle(this.book["title"])
       })
   }
 
   goBack(book):void{
     // this.location.back()
     let bookId = book ? book.id : null;
-    this.router.navigate(["/book", {id: bookId, page: this.page}])
+    this.router.navigate(["../", {id: bookId, page: this.page}],{relativeTo: this.activatedRoute})
   }
 }
 

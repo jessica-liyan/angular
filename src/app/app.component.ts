@@ -13,10 +13,17 @@ import * as Rx from 'rxjs/Rx';
   styleUrls: ['./app.component.css'],
   template: `
   <div class="app">
-    <nav class="nav">
-      <a class="btn" routerLink="/book" routerLinkActive="active">图书</a>
-      <a class="btn" routerLink="/movie" routerLinkActive="active">电影</a>
+    <nav class="nav row w">
+      <div class="col v-m t-l">
+        <a class="btn" routerLink="/book" routerLinkActive="active">图书</a>
+        <a class="btn" routerLink="/movie" routerLinkActive="active">电影</a>
+        <a class="btn" routerLink="/admin" routerLinkActive="active">管理</a>
+      </div>
+      <div class="col v-m t-r">
+        <a [routerLink]="[{ outlets: { popup: ['login'] } }]" style="margin: 0 20px;"><img src="../assets/image/login.png" class="v-m"/></a>
+      </div>
     </nav>
+    <router-outlet name="popup"></router-outlet>    
     <div class="main"><router-outlet></router-outlet></div>
   </div>
   `

@@ -8,15 +8,22 @@ import { HttpClientModule, HttpClientJsonpModule} from '@angular/common/http';
 
 import { MovieModule } from './movie/movie.module';
 import { BookModule } from './book/book.module';
+import { AdminModule } from './admin/admin.module';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login.component';
 
 import { DoubanService } from './douban.service';
+import { AuthGuard } from './auth-guard.service'
 
 const routes: Routes = [{
   path: '',
   redirectTo: '/movie',
   pathMatch: 'full'
+},{
+  path: 'login',
+  component: LoginComponent,
+  outlet: 'popup'
 }]
 
 @NgModule({
@@ -30,14 +37,16 @@ const routes: Routes = [{
     HttpClientJsonpModule,
     MovieModule,
     BookModule,
+    AdminModule,
     RouterModule.forRoot(routes,{
       enableTracing: false
     })
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
-  providers: [DoubanService],
+  providers: [DoubanService,AuthGuard],
   bootstrap: [AppComponent]
 })
 
