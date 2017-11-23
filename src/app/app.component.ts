@@ -15,9 +15,9 @@ import * as Rx from 'rxjs/Rx';
   <div class="app">
     <nav class="nav row w">
       <div class="col v-m t-l">
-        <a class="btn" routerLink="/book" routerLinkActive="active">图书</a>
-        <a class="btn" routerLink="/movie" routerLinkActive="active">电影</a>
-        <a class="btn" routerLink="/admin" routerLinkActive="active">管理</a>
+        <a routerLink="/book" routerLinkActive="active">图书</a>
+        <a routerLink="/movie" routerLinkActive="active">电影</a>
+        <a routerLink="/admin" routerLinkActive="active">管理</a>
       </div>
       <div class="col v-m t-r">
         <a [routerLink]="[{ outlets: { popup: ['login'] } }]" style="margin: 0 20px;"><img src="../assets/image/login.png" class="v-m"/></a>
@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
       .filter(route => route.outlet === 'primary')
       .mergeMap(route => route.data)
       .subscribe(data => {
-        console.log(data)
         this.titleService.setTitle(data['title'])
       })
   }

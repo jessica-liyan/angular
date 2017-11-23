@@ -12,9 +12,14 @@ import { AdminModule } from './admin/admin.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 import { DoubanService } from './douban.service';
-import { AuthGuard } from './auth-guard.service'
+import { AuthGuard } from './auth-guard.service';
+import 'hammerjs';
+
+import {MdButtonModule} from '@angular/material';
+import { ElModule} from 'element-angular';
 
 const routes: Routes = [{
   path: '',
@@ -24,6 +29,9 @@ const routes: Routes = [{
   path: 'login',
   component: LoginComponent,
   outlet: 'popup'
+},{
+  path: '**',
+  component: PageNotFoundComponent,
 }]
 
 @NgModule({
@@ -38,13 +46,16 @@ const routes: Routes = [{
     MovieModule,
     BookModule,
     AdminModule,
+    MdButtonModule, 
+    ElModule.forRoot(),
     RouterModule.forRoot(routes,{
       enableTracing: false
     })
   ],
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
   ],
   providers: [DoubanService,AuthGuard],
   bootstrap: [AppComponent]

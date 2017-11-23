@@ -48,12 +48,12 @@ export class MovieDetailComponent implements OnInit{
   ){} 
 
   ngOnInit(){
-    this.activatedRoute.params.subscribe(params => {
-      this.DoubanService.getMovieDetail(params.id).then(res => {
+    this.activatedRoute.paramMap
+      .switchMap(params => this.DoubanService.getMovieDetail(params.get('id')))
+      .subscribe(res => {
         console.log(res)
         this.movie = res
       })
-    })
   }
 
   goBack(){

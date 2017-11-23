@@ -7,6 +7,9 @@ import { BookComponent } from './book.component';
 import { BookListComponent } from './book-list.component';
 import { BookDetailComponent } from './book-detail.component';
 
+import { ElModule} from 'element-angular';
+import {MaterialModule} from '@angular/material';
+
 const routes: Routes = [
   {
     path: 'book',

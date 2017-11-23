@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~element-angular/theme/index.css";
+
 html,body,div,p,dl,dt,dd,ul,h1,h2,h3,input,textarea,button, select {padding:0;margin:0;}
 h1,h2,h3{font-weight:normal;}
 body{font-family:"Microsoft YaHei"; }
@@ -39,13 +41,15 @@ html,body{height:100%;}
 .main{padding:20px;box-sizing:border-box;}
 .midLayout{width:80%;margin:20px auto;}
 .wrapper{background:#fff;box-shadow:0 0 5px #ccc;padding:20px;box-sizing:border-box;}
-.nav{background:#ccc;box-shadow:0 0 5px #ccc;font-size:0;}
-.nav a{font-size:14px;color:#333;}
-.nav a.active{font-size:14px;color:#fff;}
+
+/* topbar */
+.nav{background:#20A0FF;font-size:0;padding-left:100px;}
+.nav a{display:inline-block;font-size:16px;color:#fff;height:80px;line-height:80px;margin:0 20px;position:relative;padding:0 20px;}
+.nav a.active:before{content:"";display:inline-block;width:100%;height:4px;background:rgba(255,255,255,0.5);position:absolute;left:0;bottom:0;}
 
 .tabs{border-bottom:1px solid #666;}
 .tabs a{display:inline-block;font-size:14px;color:#333;height:40px;line-height:40px;padding:0 20px;}
-.tabs a.active{background:#666;color:#fff;}
+.tabs a.active{background:#ccc;color:#fff;}
 
 h1{font-size:20px;color:#333;margin:20px 0;font-weight:normal;}
 h2{font-size:16px;color:#333;margin:10px 0;font-weight:normal;}

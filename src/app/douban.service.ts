@@ -31,19 +31,19 @@ export class DoubanService{
     return this.http.jsonp(url,'callback')
   }
   // 电影正在热映
-  getMovieInTheater(city){
-    let url = `${this.base_Url}movie/in_theaters?city=${city}`
-    return this.http.jsonp(url,'callback').toPromise()
+  getMovieInTheater(city, start = 0, count = 20){
+    let url = `${this.base_Url}movie/in_theaters?city=${city}&start=${start}&count=${count}`
+    return this.http.jsonp(url,'callback')
   }
   // 即将上线
-  getMovieInComing(){
-    let url = `${this.base_Url}movie/coming_soon`
-    return this.http.jsonp(url,'callback').toPromise()
+  getMovieInComing(start = 0, count = 20){
+    let url = `${this.base_Url}movie/coming_soon?start=${start}&count=${count}`
+    return this.http.jsonp(url,'callback')
   }
   // 电影详情
   getMovieDetail(id){
     let url = `${this.base_Url}movie/${id}`
-    return this.http.jsonp(url,'callback').toPromise()
+    return this.http.jsonp(url,'callback')
   }
 
 }
