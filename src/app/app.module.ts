@@ -18,9 +18,6 @@ import { DoubanService } from './douban.service';
 import { AuthGuard } from './auth-guard.service';
 import 'hammerjs';
 
-import {MdButtonModule} from '@angular/material';
-import { ElModule} from 'element-angular';
-
 const routes: Routes = [{
   path: '',
   redirectTo: '/movie',
@@ -46,8 +43,6 @@ const routes: Routes = [{
     MovieModule,
     BookModule,
     AdminModule,
-    MdButtonModule, 
-    ElModule.forRoot(),
     RouterModule.forRoot(routes,{
       enableTracing: false
     })
